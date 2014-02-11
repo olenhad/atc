@@ -103,19 +103,26 @@ BEGIN
 		req <= '1';
 		wait for clk_period;
 		req <= '0';
-		wait for clk_period*10;
+		wait for clk_period*5;
 		
 		TYPE_NUMBER <= b"000";
 		req <= '1';
-		wait for clk_period*10;
+		wait for clk_period;
+		req <= '0';
+		
+		wait for clk_period*5;
+		
+		TYPE_NUMBER <= b"000";
+		req <= '1';
+		wait for clk_period*2;
+		req <= '0';
+		
+		wait for clk_period*5;
 		
 		TYPE_NUMBER <= b"010";
 		req <= '1';
-		wait for clk_period*16;
-		
-		TYPE_NUMBER <= b"010";
-		req <= '1';
-		wait for clk_period*10;
+		wait for clk_period*2;
+		req <= '0';
 		
 		
 

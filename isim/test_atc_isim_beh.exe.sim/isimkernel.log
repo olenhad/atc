@@ -2,9 +2,27 @@ Command line:
    test_atc_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  54754
+     -socket  56810
 
-Tue Feb 11 23:43:27 2014
+Wed Feb 12 01:45:50 2014
 
 
- Elaboration Time: 0.1404 sec
+ Elaboration Time: 0.1248 sec
+
+ Current Memory Usage: 817.033 Meg
+
+ Total Signals          : 16
+ Total Nets             : 16
+ Total Signal Drivers   : 11
+ Total Blocks           : 4
+ Total Primitive Blocks : 3
+ Total Processes        : 6
+ Total Traceable Variables  : 14
+ Total Scalar Nets and Variables : 500
+
+ Total Simulation Time: 0.2028 sec
+
+ Current Memory Usage: 661.959 Meg
+
+Wed Feb 12 01:52:22 2014
+
