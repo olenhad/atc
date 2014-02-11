@@ -1,0 +1,19 @@
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -o "C:/Users/pc richard/Documents/EE4218/l1/lab1b/test_atc_isim_beh.exe" -prj "C:/Users/pc richard/Documents/EE4218/l1/lab1b/test_atc_beh.prj" "work.test_atc" 
+ISim O.61xd (signature 0x1cce1bb2)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" into library work
+Parsing VHDL file "C:/Users/pc richard/Documents/EE4218/l1/lab1b/test_atc.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package numeric_std
+Compiling architecture behavioral of entity atc [atc_default]
+Compiling architecture behavior of entity test_atc
+Time Resolution for simulation is 1ps.
+Compiled 6 VHDL Units
+Built simulation executable C:/Users/pc richard/Documents/EE4218/l1/lab1b/test_atc_isim_beh.exe
+Fuse Memory Usage: 24792 KB
+Fuse CPU Usage: 608 ms

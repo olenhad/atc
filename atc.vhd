@@ -40,7 +40,7 @@ end atc;
 architecture Behavioral of atc is
 
 type jet_type is (heavy_jet, light_jet);
-type atc_state is (idle, waiting, displaying);
+type atc_state is (idle, displaying);
 
 signal clk_div : std_logic;
 
@@ -49,8 +49,7 @@ signal prev_jet_type : jet_type := heavy_jet;
 
 signal req_granted : std_logic := '0';
 signal waited_for : std_logic_vector(3 downto 0) := (others => '0');
-
-signal current_state : atc_state := idle;
+signal waited_for_control : std_logic := '0';
 
 begin
 
@@ -64,41 +63,54 @@ req_granted <= '1' when cur_jet_type = heavy_jet or
 								(cur_jet_type = light_jet and prev_jet_type = heavy_jet and waited_for >= x"A")
 						 else
 					'0';
+					
+waited_for <= 	x"A" when waited_for >= x"A" else
+					std_logic_vector(unsigned(waited_for) + 1) when waited_for_control = '1' else
+					x"0" when waited_for_control = '0';
+				  
 		
 process (CLK)
+
 variable clk_count : std_logic_vector(25 downto 0) := (others => '0');
+
 begin
 	if rising_edge(CLK) then
 		clk_count := std_logic_vector(unsigned(clk_count) + 1);
-		clk_div <= clk_count(25);
+		clk_div <= clk_count(0);
 	end if;
 end process;
 
 process (clk_div)
 variable display_count : std_logic_vector(1 downto 0) := (others => '0');
+variable current_state : atc_state := idle;
+
 begin
 	if rising_edge(clk_div) then
-		case current_state is
-			when idle =>
-				if req = '1' and req_granted = '1' then
-					current_state <= displaying;
-				elsif req = '1' and req_granted = '0' then
-					current_state <= waiting;
-				end if;
-			when waiting =>
-				waited_for <= std_logic_vector(unsigned(waited_for) + 1);
-				if req_granted = '1' then
-					waited_for <= x"0";
-					current_state <= displaying;
-				end if;
-
-			when displaying =>
-				display_count := std_logic_vector(unsigned(display_count) + 1);
-				if display_count = b"11" then
-					current_state <= idle;
-					display_count := b"00";
-				end if;
-		end case;
+		if current_state = idle then
+			GRANTED <= '0';
+			DENIED <= '0';
+			if req = '1' then
+				current_state := displaying;
+			end if;
+		end if;
+		if current_state = displaying then
+			display_count := std_logic_vector(unsigned(display_count) + 1);
+			GRANTED <= req_granted;
+			DENIED <= not req_granted;
+			
+			if display_count = b"11" then
+				current_state := idle;
+				prev_jet_type <= cur_jet_type;
+			end if;
+			
+		end if;
+		
+		if req_granted = '1' and cur_jet_type = heavy_jet then
+			waited_for_control <= '1';
+		elsif req_granted = '1' and cur_jet_type = light_jet and prev_jet_type = heavy_jet then
+			waited_for_control <= '0';
+		end if;
+		
 	end if;
 end process;
 

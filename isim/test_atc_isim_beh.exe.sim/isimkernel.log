@@ -1,0 +1,10 @@
+Command line:
+   test_atc_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  54754
+
+Tue Feb 11 23:43:27 2014
+
+
+ Elaboration Time: 0.1404 sec
