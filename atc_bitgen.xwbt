@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\pc richard\Documents\EE4218\l1\lab1b\atc.ncd
+OUTFILE=C:\Users\pc richard\Documents\EE4218\l1\lab1b\atc.bit
+FAMILY=Spartan3E
+PART=xc3s1600e-4fg320
+WORKINGDIR=C:\Users\pc richard\Documents\EE4218\l1\lab1b
+LICENSE=ISE
+USER_INFO=174413354_207303390_210568532_908

@@ -1,0 +1,15 @@
+//! **************************************************************************
+// Written by: Map O.61xd on Wed Feb 12 03:59:25 2014
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "DENIED" LOCATE = SITE "G9" LEVEL 1;
+COMP "TYPE_NUMBER<0>" LOCATE = SITE "L13" LEVEL 1;
+COMP "TYPE_NUMBER<1>" LOCATE = SITE "L14" LEVEL 1;
+COMP "TYPE_NUMBER<2>" LOCATE = SITE "H18" LEVEL 1;
+COMP "REQ" LOCATE = SITE "V4" LEVEL 1;
+COMP "GRANTED" LOCATE = SITE "A8" LEVEL 1;
+COMP "CLK" LOCATE = SITE "C9" LEVEL 1;
+NET "CLK_BUFGP/IBUFG" BEL "CLK_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
+SCHEMATIC END;
+
