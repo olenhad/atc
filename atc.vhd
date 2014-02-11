@@ -63,29 +63,25 @@ req_granted <= '1' when cur_jet_type = heavy_jet or
 								(cur_jet_type = light_jet and prev_jet_type = heavy_jet and waited_for >= x"A")
 						 else
 					'0';
-					
-waited_for <= 	x"A" when waited_for >= x"A" else
-					std_logic_vector(unsigned(waited_for) + 1) when waited_for_control = '1' else
-					x"0" when waited_for_control = '0';
-				  
+									  
 		
---process (CLK)
+process (CLK)
 
---variable clk_count : std_logic_vector(25 downto 0) := (others => '0');
+variable clk_count : std_logic_vector(25 downto 0) := (others => '0');
 
---begin
---	if rising_edge(CLK) then
---		clk_count := std_logic_vector(unsigned(clk_count) + 1);
---		clk_div <= clk_count(0);
---	end if;
---end process;
+begin
+	if rising_edge(CLK) then
+		clk_count := std_logic_vector(unsigned(clk_count) + 1);
+		clk_div <= clk_count(25);
+	end if;
+end process;
 
-process (clk)
+process (clk_div)
 variable display_count : std_logic_vector(1 downto 0) := (others => '0');
 variable current_state : atc_state := idle;
 
 begin
-	if rising_edge(clk) then
+	if rising_edge(clk_div) then
 		if current_state = idle then
 			GRANTED <= '0';
 			DENIED <= '0';

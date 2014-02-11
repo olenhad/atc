@@ -4,13 +4,13 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.24 secs
+Total CPU time to Xst completion: 0.23 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.25 secs
+Total CPU time to Xst completion: 0.23 secs
  
 --> Reading design: atc.prj
 
@@ -106,16 +106,18 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 Compiling vhdl file "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" in Library work.
 Entity <atc> compiled.
-Entity <atc> (Architecture <Behavioral>) compiled.
+Entity <atc> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
+Analyzing hierarchy for entity <atc> in library <work> (architecture <behavioral>).
+
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <atc> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <atc> in library <work> (Architecture <behavioral>).
 Entity <atc> analyzed. Unit <atc> generated.
 
 
@@ -127,20 +129,313 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <atc>.
     Related source file is "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd".
-WARNING:Xst:647 - Input <TYPE_NUMBER> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <DENIED> is never assigned.
-WARNING:Xst:1306 - Output <GRANTED> is never assigned.
-WARNING:Xst:647 - Input <REQ> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit register for signal <GRANTED>.
+    Found 1-bit register for signal <DENIED>.
+    Found 26-bit up counter for signal <clk_count>.
+    Found 26-bit adder for signal <clk_count$add0000> created at line 74.
+    Found 1-bit register for signal <clk_div>.
+    Found 1-bit register for signal <current_state<0>>.
+    Found 2-bit adder for signal <current_state_0$add0000> created at line 93.
+    Found 2-bit up counter for signal <display_count>.
+    Found 1-bit register for signal <prev_jet_type<0>>.
+    Found 4-bit comparator greatequal for signal <req_granted$cmp_ge0000> created at line 61.
+    Found 4-bit up counter for signal <waited_for>.
+    Found 1-bit register for signal <waited_for_control>.
+    Summary:
+	inferred   3 Counter(s).
+	inferred   6 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
 Unit <atc> synthesized.
 
 
 =========================================================================
 HDL Synthesis Report
 
-Found no macro
+Macro Statistics
+# Adders/Subtractors                                   : 2
+ 2-bit adder                                           : 1
+ 26-bit adder                                          : 1
+# Counters                                             : 3
+ 2-bit up counter                                      : 1
+ 26-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 6
+ 1-bit register                                        : 6
+# Comparators                                          : 1
+ 4-bit comparator greatequal                           : 1
+
 =========================================================================
 
 =========================================================================
 *                       Advanced HDL Synthesis                          *
 =========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 2
+ 2-bit adder                                           : 1
+ 26-bit adder                                          : 1
+# Counters                                             : 3
+ 2-bit up counter                                      : 1
+ 26-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 6
+ Flip-Flops                                            : 6
+# Comparators                                          : 1
+ 4-bit comparator greatequal                           : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <atc> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block atc, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 38
+ Flip-Flops                                            : 38
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : atc.ngr
+Top Level Output File Name         : atc
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 7
+
+Cell Usage :
+# BELS                             : 149
+#      GND                         : 1
+#      INV                         : 5
+#      LUT1                        : 50
+#      LUT2                        : 3
+#      LUT3                        : 3
+#      LUT3_D                      : 1
+#      LUT4                        : 7
+#      LUT4_L                      : 1
+#      MUXCY                       : 50
+#      VCC                         : 1
+#      XORCY                       : 27
+# FlipFlops/Latches                : 38
+#      FD                          : 28
+#      FDE                         : 3
+#      FDRE                        : 6
+#      FDSE                        : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 6
+#      IBUF                        : 4
+#      OBUF                        : 2
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1600efg320-4 
+
+ Number of Slices:                       35  out of  14752     0%  
+ Number of Slice Flip Flops:             38  out of  29504     0%  
+ Number of 4 input LUTs:                 70  out of  29504     0%  
+ Number of IOs:                           7
+ Number of bonded IOBs:                   7  out of    250     2%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+CLK                                | BUFGP                  | 27    |
+clk_div                            | NONE(DENIED)           | 11    |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 4.850ns (Maximum Frequency: 206.186MHz)
+   Minimum input arrival time before clock: 4.306ns
+   Maximum output required time after clock: 4.283ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'CLK'
+  Clock period: 4.850ns (frequency: 206.186MHz)
+  Total number of paths / destination ports: 377 / 27
+-------------------------------------------------------------------------
+Delay:               4.850ns (Levels of Logic = 26)
+  Source:            clk_count_1 (FF)
+  Destination:       clk_div (FF)
+  Source Clock:      CLK rising
+  Destination Clock: CLK rising
+
+  Data Path: clk_count_1 to clk_div
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.591   0.622  clk_count_1 (clk_count_1)
+     LUT1:I0->O            1   0.704   0.000  Madd_clk_count_add0000_cy<1>_rt (Madd_clk_count_add0000_cy<1>_rt)
+     MUXCY:S->O            1   0.464   0.000  Madd_clk_count_add0000_cy<1> (Madd_clk_count_add0000_cy<1>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<2> (Madd_clk_count_add0000_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<3> (Madd_clk_count_add0000_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<4> (Madd_clk_count_add0000_cy<4>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<5> (Madd_clk_count_add0000_cy<5>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<6> (Madd_clk_count_add0000_cy<6>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<7> (Madd_clk_count_add0000_cy<7>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<8> (Madd_clk_count_add0000_cy<8>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<9> (Madd_clk_count_add0000_cy<9>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<10> (Madd_clk_count_add0000_cy<10>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<11> (Madd_clk_count_add0000_cy<11>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<12> (Madd_clk_count_add0000_cy<12>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<13> (Madd_clk_count_add0000_cy<13>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<14> (Madd_clk_count_add0000_cy<14>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<15> (Madd_clk_count_add0000_cy<15>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<16> (Madd_clk_count_add0000_cy<16>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<17> (Madd_clk_count_add0000_cy<17>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<18> (Madd_clk_count_add0000_cy<18>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<19> (Madd_clk_count_add0000_cy<19>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<20> (Madd_clk_count_add0000_cy<20>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<21> (Madd_clk_count_add0000_cy<21>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<22> (Madd_clk_count_add0000_cy<22>)
+     MUXCY:CI->O           1   0.059   0.000  Madd_clk_count_add0000_cy<23> (Madd_clk_count_add0000_cy<23>)
+     MUXCY:CI->O           0   0.059   0.000  Madd_clk_count_add0000_cy<24> (Madd_clk_count_add0000_cy<24>)
+     XORCY:CI->O           1   0.804   0.000  Madd_clk_count_add0000_xor<25> (clk_count_add0000<25>)
+     FD:D                      0.308          clk_div
+    ----------------------------------------
+    Total                      4.850ns (4.228ns logic, 0.622ns route)
+                                       (87.2% logic, 12.8% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_div'
+  Clock period: 3.784ns (frequency: 264.271MHz)
+  Total number of paths / destination ports: 61 / 23
+-------------------------------------------------------------------------
+Delay:               3.784ns (Levels of Logic = 2)
+  Source:            prev_jet_type_0 (FF)
+  Destination:       waited_for_control (FF)
+  Source Clock:      clk_div rising
+  Destination Clock: clk_div rising
+
+  Data Path: prev_jet_type_0 to waited_for_control
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              3   0.591   0.706  prev_jet_type_0 (prev_jet_type_0)
+     LUT4_L:I0->LO         1   0.704   0.104  waited_for_control_and0001_SW1 (N9)
+     LUT4:I3->O            1   0.704   0.420  waited_for_control_and0001 (waited_for_control_and0001)
+     FDSE:CE                   0.555          waited_for_control
+    ----------------------------------------
+    Total                      3.784ns (2.554ns logic, 1.230ns route)
+                                       (67.5% logic, 32.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_div'
+  Total number of paths / destination ports: 23 / 11
+-------------------------------------------------------------------------
+Offset:              4.306ns (Levels of Logic = 3)
+  Source:            REQ (PAD)
+  Destination:       DENIED (FF)
+  Destination Clock: clk_div rising
+
+  Data Path: REQ to DENIED
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             3   1.218   0.610  REQ_IBUF (REQ_IBUF)
+     LUT2:I1->O            4   0.704   0.762  current_state_mux00001 (current_state_mux0000)
+     LUT4:I0->O            1   0.704   0.000  GRANTED_mux0000 (GRANTED_mux0000)
+     FDE:D                     0.308          GRANTED
+    ----------------------------------------
+    Total                      4.306ns (2.934ns logic, 1.372ns route)
+                                       (68.1% logic, 31.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_div'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              4.283ns (Levels of Logic = 1)
+  Source:            DENIED (FF)
+  Destination:       DENIED (PAD)
+  Source Clock:      clk_div rising
+
+  Data Path: DENIED to DENIED
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.591   0.420  DENIED (DENIED_OBUF)
+     OBUF:I->O                 3.272          DENIED_OBUF (DENIED)
+    ----------------------------------------
+    Total                      4.283ns (3.863ns logic, 0.420ns route)
+                                       (90.2% logic, 9.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 12.06 secs
+ 
+--> 
+
+Total memory usage is 242852 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
 
