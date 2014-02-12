@@ -4,13 +4,13 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.17 secs
+Total CPU time to Xst completion: 0.23 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.17 secs
+Total CPU time to Xst completion: 0.23 secs
  
 --> Reading design: atc.prj
 
@@ -129,22 +129,28 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <atc>.
     Related source file is "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd".
+    Using one-hot encoding for signal <waited_for_control>.
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <waited_for_control$mux0000> of Case statement line 0 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <waited_for_control$mux0000> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Using one-hot encoding for signal <waited_for_control$mux0000>.
     Found 1-bit register for signal <GRANTED>.
     Found 1-bit register for signal <DENIED>.
-    Found 1-bit register for signal <cached_req_granted>.
+    Found 4-bit register for signal <WAITED_FOR_DEBUG>.
     Found 26-bit up counter for signal <clk_count>.
-    Found 26-bit adder for signal <clk_count$add0000> created at line 77.
+    Found 26-bit adder for signal <clk_count$add0000> created at line 78.
     Found 1-bit register for signal <clk_div>.
     Found 1-bit register for signal <current_state<0>>.
-    Found 2-bit adder for signal <current_state_0$add0000> created at line 105.
+    Found 2-bit adder for signal <current_state_0$add0000> created at line 116.
     Found 2-bit up counter for signal <display_count>.
     Found 1-bit register for signal <prev_jet_type<0>>.
-    Found 4-bit comparator greatequal for signal <req_granted$cmp_ge0000> created at line 64.
+    Found 4-bit comparator greatequal for signal <req_granted$cmp_ge0000> created at line 65.
     Found 4-bit up counter for signal <waited_for>.
-    Found 1-bit register for signal <waited_for_control>.
+    Found 3-bit register for signal <waited_for_control>.
     Summary:
 	inferred   3 Counter(s).
-	inferred   7 D-type flip-flop(s).
+	inferred  12 D-type flip-flop(s).
 	inferred   2 Adder/Subtractor(s).
 	inferred   1 Comparator(s).
 Unit <atc> synthesized.
@@ -162,7 +168,9 @@ Macro Statistics
  26-bit up counter                                     : 1
  4-bit up counter                                      : 1
 # Registers                                            : 7
- 1-bit register                                        : 7
+ 1-bit register                                        : 5
+ 3-bit register                                        : 1
+ 4-bit register                                        : 1
 # Comparators                                          : 1
  4-bit comparator greatequal                           : 1
 
@@ -172,6 +180,7 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+WARNING:Xst:1293 - FF/Latch <waited_for_control_2> has a constant value of 0 in block <atc>. This FF/Latch will be trimmed during the optimization process.
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -184,8 +193,8 @@ Macro Statistics
  2-bit up counter                                      : 1
  26-bit up counter                                     : 1
  4-bit up counter                                      : 1
-# Registers                                            : 7
- Flip-Flops                                            : 7
+# Registers                                            : 12
+ Flip-Flops                                            : 12
 # Comparators                                          : 1
  4-bit comparator greatequal                           : 1
 
@@ -194,6 +203,7 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1293 - FF/Latch <waited_for_control_2> has a constant value of 0 in block <atc>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <atc> ...
 
@@ -207,8 +217,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 39
- Flip-Flops                                            : 39
+# Registers                                            : 43
+ Flip-Flops                                            : 43
 
 =========================================================================
 
@@ -234,30 +244,29 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 7
+# IOs                              : 11
 
 Cell Usage :
-# BELS                             : 162
+# BELS                             : 151
 #      GND                         : 1
-#      INV                         : 5
+#      INV                         : 4
 #      LUT1                        : 50
-#      LUT2                        : 5
-#      LUT3                        : 5
-#      LUT4                        : 14
+#      LUT2                        : 4
+#      LUT3                        : 4
+#      LUT3_D                      : 2
+#      LUT4                        : 8
 #      MUXCY                       : 50
-#      MUXF5                       : 4
 #      VCC                         : 1
 #      XORCY                       : 27
-# FlipFlops/Latches                : 39
-#      FD                          : 28
-#      FDE                         : 4
+# FlipFlops/Latches                : 43
+#      FD                          : 34
+#      FDE                         : 3
 #      FDRE                        : 6
-#      FDSE                        : 1
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 6
+# IO Buffers                       : 10
 #      IBUF                        : 4
-#      OBUF                        : 2
+#      OBUF                        : 6
 =========================================================================
 
 Device utilization summary:
@@ -265,11 +274,11 @@ Device utilization summary:
 
 Selected Device : 3s1600efg320-4 
 
- Number of Slices:                       39  out of  14752     0%  
- Number of Slice Flip Flops:             39  out of  29504     0%  
- Number of 4 input LUTs:                 79  out of  29504     0%  
- Number of IOs:                           7
- Number of bonded IOBs:                   7  out of    250     2%  
+ Number of Slices:                       38  out of  14752     0%  
+ Number of Slice Flip Flops:             43  out of  29504     0%  
+ Number of 4 input LUTs:                 72  out of  29504     0%  
+ Number of IOs:                          11
+ Number of bonded IOBs:                  11  out of    250     4%  
  Number of GCLKs:                         1  out of     24     4%  
 
 ---------------------------
@@ -294,7 +303,7 @@ Clock Information:
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
 CLK                                | BUFGP                  | 27    |
-clk_div                            | NONE(current_state_0)  | 12    |
+clk_div                            | NONE(current_state_0)  | 16    |
 -----------------------------------+------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -306,8 +315,8 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 5.546ns (Maximum Frequency: 180.310MHz)
-   Minimum input arrival time before clock: 6.654ns
+   Minimum period: 6.085ns (Maximum Frequency: 164.339MHz)
+   Minimum input arrival time before clock: 6.970ns
    Maximum output required time after clock: 4.283ns
    Maximum combinational path delay: No path found
 
@@ -364,53 +373,53 @@ Delay:               4.850ns (Levels of Logic = 26)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_div'
-  Clock period: 5.546ns (frequency: 180.310MHz)
-  Total number of paths / destination ports: 83 / 26
+  Clock period: 6.085ns (frequency: 164.339MHz)
+  Total number of paths / destination ports: 84 / 28
 -------------------------------------------------------------------------
-Delay:               5.546ns (Levels of Logic = 3)
-  Source:            prev_jet_type_0 (FF)
-  Destination:       waited_for_control (FF)
+Delay:               6.085ns (Levels of Logic = 3)
+  Source:            current_state_0 (FF)
+  Destination:       waited_for_0 (FF)
   Source Clock:      clk_div rising
   Destination Clock: clk_div rising
 
-  Data Path: prev_jet_type_0 to waited_for_control
+  Data Path: current_state_0 to waited_for_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              2   0.591   0.451  prev_jet_type_0 (prev_jet_type_0)
-     LUT4:I3->O            1   0.704   0.424  req_granted_or0000_SW0 (N2)
-     LUT4:I3->O            5   0.704   0.637  req_granted_or0000 (req_granted)
-     LUT4:I3->O            1   0.704   0.420  waited_for_control_and00001 (waited_for_control_and0000)
-     FDSE:S                    0.911          waited_for_control
+     FD:C->Q               6   0.591   0.748  current_state_0 (current_state_0)
+     LUT2:I1->O            1   0.704   0.424  waited_for_control_mux0000<1>_SW0 (N5)
+     LUT4:I3->O            7   0.704   0.712  waited_for_control_mux0000<1> (waited_for_control_mux0000<1>)
+     LUT4:I3->O            4   0.704   0.587  waited_for_and00001 (waited_for_and0000)
+     FDRE:R                    0.911          waited_for_0
     ----------------------------------------
-    Total                      5.546ns (3.614ns logic, 1.932ns route)
-                                       (65.2% logic, 34.8% route)
+    Total                      6.085ns (3.614ns logic, 2.471ns route)
+                                       (59.4% logic, 40.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_div'
-  Total number of paths / destination ports: 49 / 13
+  Total number of paths / destination ports: 81 / 19
 -------------------------------------------------------------------------
-Offset:              6.654ns (Levels of Logic = 4)
-  Source:            TYPE_NUMBER<1> (PAD)
-  Destination:       waited_for_control (FF)
+Offset:              6.970ns (Levels of Logic = 4)
+  Source:            TYPE_NUMBER<0> (PAD)
+  Destination:       waited_for_0 (FF)
   Destination Clock: clk_div rising
 
-  Data Path: TYPE_NUMBER<1> to waited_for_control
+  Data Path: TYPE_NUMBER<0> to waited_for_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             8   1.218   0.932  TYPE_NUMBER_1_IBUF (TYPE_NUMBER_1_IBUF)
-     LUT4:I0->O            1   0.704   0.424  req_granted_or0000_SW0 (N2)
-     LUT4:I3->O            5   0.704   0.637  req_granted_or0000 (req_granted)
-     LUT4:I3->O            1   0.704   0.420  waited_for_control_and00001 (waited_for_control_and0000)
-     FDSE:S                    0.911          waited_for_control
+     IBUF:I->O             2   1.218   0.622  TYPE_NUMBER_0_IBUF (TYPE_NUMBER_0_IBUF)
+     LUT3:I0->O            5   0.704   0.808  cur_jet_type_0_or00001 (cur_jet_type_0_or0000)
+     LUT4:I0->O            7   0.704   0.712  waited_for_control_mux0000<1> (waited_for_control_mux0000<1>)
+     LUT4:I3->O            4   0.704   0.587  waited_for_and00001 (waited_for_and0000)
+     FDRE:R                    0.911          waited_for_0
     ----------------------------------------
-    Total                      6.654ns (4.241ns logic, 2.413ns route)
-                                       (63.7% logic, 36.3% route)
+    Total                      6.970ns (4.241ns logic, 2.729ns route)
+                                       (60.8% logic, 39.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_div'
-  Total number of paths / destination ports: 2 / 2
+  Total number of paths / destination ports: 6 / 6
 -------------------------------------------------------------------------
 Offset:              4.283ns (Levels of Logic = 1)
   Source:            DENIED (FF)
@@ -430,14 +439,14 @@ Offset:              4.283ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 10.94 secs
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 12.51 secs
  
 --> 
 
 Total memory usage is 242660 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    0 (   0 filtered)
-Number of infos    :    1 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
 

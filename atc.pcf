@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map O.61xd on Wed Feb 12 10:04:26 2014
+// Written by: Map O.61xd on Wed Feb 12 11:48:22 2014
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -8,6 +8,10 @@ COMP "TYPE_NUMBER<0>" LOCATE = SITE "L13" LEVEL 1;
 COMP "TYPE_NUMBER<1>" LOCATE = SITE "L14" LEVEL 1;
 COMP "TYPE_NUMBER<2>" LOCATE = SITE "H18" LEVEL 1;
 COMP "REQ" LOCATE = SITE "V4" LEVEL 1;
+COMP "WAITED_FOR_DEBUG<0>" LOCATE = SITE "D4" LEVEL 1;
+COMP "WAITED_FOR_DEBUG<1>" LOCATE = SITE "C3" LEVEL 1;
+COMP "WAITED_FOR_DEBUG<2>" LOCATE = SITE "D6" LEVEL 1;
+COMP "WAITED_FOR_DEBUG<3>" LOCATE = SITE "E6" LEVEL 1;
 COMP "GRANTED" LOCATE = SITE "A8" LEVEL 1;
 COMP "CLK" LOCATE = SITE "C9" LEVEL 1;
 NET "CLK_BUFGP/IBUFG" BEL "CLK_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;

@@ -34,13 +34,15 @@ entity atc is
 			  REQ : in  STD_LOGIC;
            TYPE_NUMBER : in  STD_LOGIC_VECTOR(2 downto 0);
            GRANTED : out  STD_LOGIC;
-           DENIED : out  STD_LOGIC);
+           DENIED : out  STD_LOGIC;
+			  WAITED_FOR_DEBUG : out STD_LOGIC_VECTOR(3 downto 0));
 end atc;
 
 architecture Behavioral of atc is
 
 type jet_type is (heavy_jet, light_jet);
 type atc_state is (idle, displaying);
+type wait_state is (idle, count, reset);
 
 signal clk_div : std_logic;
 
@@ -48,8 +50,7 @@ signal cur_jet_type : jet_type := light_jet;
 signal prev_jet_type : jet_type := light_jet;
 
 signal req_granted : std_logic := '0';
-signal waited_for : std_logic_vector(3 downto 0) := (others => '0');
-signal waited_for_control : std_logic := '0';
+signal waited_for : std_logic_vector(3 downto 0) := x"a";
 
 begin
 
@@ -85,17 +86,27 @@ variable display_count : std_logic_vector(1 downto 0) := (others => '0');
 -- current_state keeps track of the state of the atc. We only have 2 states right now
 variable current_state : atc_state := idle;
 variable cached_req_granted : std_logic;
+variable waited_for_control : wait_state := idle;
+
+
 begin
 	if rising_edge(clk_div) then
-	
+		cached_req_granted := req_granted;
 		-- idle state asserts no output
 		-- Only way out of idle state, is if a req is registered
 		if current_state = idle then
 			GRANTED <= '0';
 			DENIED <= '0';
 			if req = '1' then
-				cached_req_granted := req_granted;
+				
 				current_state := displaying;
+				if cur_jet_type = heavy_jet then
+					waited_for_control := reset;
+				else
+					if waited_for_control /= idle then
+						waited_for_control := count;
+					end if;
+				end if;
 			end if;
 		end if;
 		-- displaying implies the atc is currently displaying the result. It maintains this state for 3 seconds before 
@@ -112,29 +123,25 @@ begin
 				display_count := b"00";
 			-- prev_jet_type is assigedn the value of cur_jet_type. As this is the point where the atc is ready for a new req
 				prev_jet_type <= cur_jet_type;
+				
 			end if;
 			
 		end if;
 		
 		-- managing waited_for is independent of the atc state machine
 		-- We need to start waiting when we grant a heavy jet
-		if cached_req_granted = '1' and cur_jet_type = heavy_jet then
-			waited_for_control <= '1';
-		-- We stop waiting when the current jet is a light jet and previous jet was a heavy jet
-		-- ie the only condition where wait_for is used
-		elsif cached_req_granted = '1' and cur_jet_type = light_jet and prev_jet_type = heavy_jet then
-			waited_for_control <= '0';
-		end if;
-		
-		-- Waited_for either increments to A every clk_cycle if waited_for_cycle is asserted, or is reset to 0 otherwise
-		if waited_for_control = '1' then
-			if waited_for /= x"a" then
-				waited_for <= std_logic_vector(unsigned(waited_for) + 1);
+		if waited_for_control = count then
+			waited_for <= std_logic_vector(unsigned(waited_for) + 1);
+			if waited_for >= x"a" then
+				waited_for_control := idle;
 			end if;
-		else
-			waited_for <= x"0";
-		end if;
+		elsif waited_for_control = idle then
 		
+		elsif waited_for_control = reset then
+			waited_for <= x"0";
+			waited_for_control := count;
+		end if;
+		waited_for_debug <= waited_for;
 	end if;
 end process;
 
