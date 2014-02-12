@@ -44,8 +44,8 @@ type atc_state is (idle, displaying);
 
 signal clk_div : std_logic;
 
-signal cur_jet_type : jet_type := heavy_jet;
-signal prev_jet_type : jet_type := heavy_jet;
+signal cur_jet_type : jet_type := light_jet;
+signal prev_jet_type : jet_type := light_jet;
 
 signal req_granted : std_logic := '0';
 signal waited_for : std_logic_vector(3 downto 0) := (others => '0');
