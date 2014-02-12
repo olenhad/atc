@@ -5,7 +5,7 @@ C:\Xilinx\13.2\ISE_DS\ISE\.
    "atc" is an NCD, version 3.2, device xc3s1600e, package fg320, speed -4
 Opened constraints file atc.pcf.
 
-Wed Feb 12 09:49:27 2014
+Wed Feb 12 10:05:24 2014
 
 C:\Xilinx\13.2\ISE_DS\ISE\bin\nt64\unwrapped\bitgen.exe -intstyle ise -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g ConfigRate:1 -g ProgPin:PullUp -g DonePin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g DCMShutdown:Disable -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Security:None -g DonePipe:No -g DriveDone:No atc.ncd 
 

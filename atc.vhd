@@ -87,19 +87,21 @@ variable current_state : atc_state := idle;
 variable cached_req_granted : std_logic;
 begin
 	if rising_edge(clk_div) then
-		cached_req_granted := req_granted;
+	
 		-- idle state asserts no output
 		-- Only way out of idle state, is if a req is registered
 		if current_state = idle then
 			GRANTED <= '0';
 			DENIED <= '0';
 			if req = '1' then
+				cached_req_granted := req_granted;
 				current_state := displaying;
 			end if;
 		end if;
 		-- displaying implies the atc is currently displaying the result. It maintains this state for 3 seconds before 
 		-- falling back to idle. 
 		if current_state = displaying then
+				
 			display_count := std_logic_vector(unsigned(display_count) + 1);
 			GRANTED <= cached_req_granted;
 			DENIED <= not cached_req_granted;
