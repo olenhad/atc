@@ -84,9 +84,10 @@ main: process (clk_div)
 variable display_count : std_logic_vector(1 downto 0) := (others => '0');
 -- current_state keeps track of the state of the atc. We only have 2 states right now
 variable current_state : atc_state := idle;
-
+variable cached_req_granted : std_logic;
 begin
 	if rising_edge(clk_div) then
+		cached_req_granted := req_granted;
 		-- idle state asserts no output
 		-- Only way out of idle state, is if a req is registered
 		if current_state = idle then
@@ -100,8 +101,8 @@ begin
 		-- falling back to idle. 
 		if current_state = displaying then
 			display_count := std_logic_vector(unsigned(display_count) + 1);
-			GRANTED <= req_granted;
-			DENIED <= not req_granted;
+			GRANTED <= cached_req_granted;
+			DENIED <= not cached_req_granted;
 			
 			if display_count = b"11" then
 			-- display_count is reset before state tranistions
@@ -115,11 +116,11 @@ begin
 		
 		-- managing waited_for is independent of the atc state machine
 		-- We need to start waiting when we grant a heavy jet
-		if req_granted = '1' and cur_jet_type = heavy_jet then
+		if cached_req_granted = '1' and cur_jet_type = heavy_jet then
 			waited_for_control <= '1';
 		-- We stop waiting when the current jet is a light jet and previous jet was a heavy jet
 		-- ie the only condition where wait_for is used
-		elsif req_granted = '1' and cur_jet_type = light_jet and prev_jet_type = heavy_jet then
+		elsif cached_req_granted = '1' and cur_jet_type = light_jet and prev_jet_type = heavy_jet then
 			waited_for_control <= '0';
 		end if;
 		

@@ -4,13 +4,13 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.28 secs
+Total CPU time to Xst completion: 0.16 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.28 secs
+Total CPU time to Xst completion: 0.16 secs
  
 --> Reading design: atc.prj
 
@@ -135,7 +135,7 @@ Synthesizing Unit <atc>.
     Found 26-bit adder for signal <clk_count$add0000> created at line 77.
     Found 1-bit register for signal <clk_div>.
     Found 1-bit register for signal <current_state<0>>.
-    Found 2-bit adder for signal <current_state_0$add0000> created at line 102.
+    Found 2-bit adder for signal <current_state_0$add0000> created at line 103.
     Found 2-bit up counter for signal <display_count>.
     Found 1-bit register for signal <prev_jet_type<0>>.
     Found 4-bit comparator greatequal for signal <req_granted$cmp_ge0000> created at line 64.
@@ -428,12 +428,12 @@ Offset:              4.283ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 14.00 secs
-Total CPU time to Xst completion: 13.88 secs
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 12.28 secs
  
 --> 
 
-Total memory usage is 242464 kilobytes
+Total memory usage is 242660 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
