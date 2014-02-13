@@ -1,6 +1,6 @@
 iMPACT Version: 13.2
 
-iMPACT log file Started on Thu Feb 13 23:44:16 2014
+iMPACT log file Started on Fri Feb 14 00:23:00 2014
 
 Welcome to iMPACT
 iMPACT Version: 13.2
@@ -34,7 +34,7 @@ Elapsed time =      1 sec.
 Type = 0x0004.
  ESN device is not available for this cable.
 Attempting to identify devices in the boundary-scan chain configuration...
-INFO:iMPACT - Current time: 2/13/2014 11:44:25 PM
+INFO:iMPACT - Current time: 2/14/2014 12:23:08 AM
 // *** BATCH CMD : Identify -inferir 
 PROGRESS_START - Starting Operation.
 Identifying chain contents...'0': : Manufacturer's ID = Xilinx xc2c64a, Version : 0
@@ -57,7 +57,7 @@ INFO:iMPACT:501 - '1': Added Device xc3s1600e successfully.
 ----------------------------------------------------------------------
 done.
 PROGRESS_END - End Operation.
-Elapsed time =      0 sec.
+Elapsed time =      1 sec.
 // *** BATCH CMD : identifyMPM 
 // *** BATCH CMD : assignFile -p 1 -file "C:/Users/pcrichard/Documents/EE4218/l1/lab1b/atc.bit"
 '1': Loading file 'C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.bit' ...
@@ -68,13 +68,13 @@ UserID read from the bitstream file = 0xFFFFFFFF.
 ----------------------------------------------------------------------
 INFO:iMPACT:501 - '1': Added Device xc3s1600e successfully.
 ----------------------------------------------------------------------
-INFO:iMPACT - Current time: 2/13/2014 11:44:49 PM
+INFO:iMPACT - Current time: 2/14/2014 12:23:45 AM
 // *** BATCH CMD : Program -p 1 
-PROGRESS_START - Starting Operation.
 Maximum TCK operating frequency for this device chain: 10000000.
 Validating chain...
 Boundary-scan chain validated successfully.
 '1': Programming device...
+PROGRESS_START - Starting Operation.
  LCK_cycle = NoWait.
 LCK cycle: NoWait
 done.
@@ -88,3 +88,33 @@ INFO:iMPACT - '1': Checking done pin....done.
 '1': Programmed successfully.
 PROGRESS_END - End Operation.
 Elapsed time =      2 sec.
+Project: 'C:\Users\pc richard\Documents\EE4218\l1\lab1a\\auto_project.ipf'created.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : saveProjectFile -file "C:\Users\pcrichard\Documents\EE4218\l1\lab1a\\auto_project.ipf"
+// *** BATCH CMD : setMode -bs
+INFO:iMPACT - Launching WebTalk, please refer to the webtalk log at C:\Users\pc   richard\Documents\EE4218\l1\lab1a\webtalk.log for details.
+INFO:iMPACT - Running wbtc successfully.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff

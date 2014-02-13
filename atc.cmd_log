@@ -144,3 +144,9 @@ map -intstyle ise -p xc3s1600e-fg320-4 -cm area -ir off -pr off -c 100 -o atc_ma
 par -w -intstyle ise -ol high -t 1 atc_map.ncd atc.ncd atc.pcf 
 trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml atc.twx atc.ncd -o atc.twr atc.pcf -ucf atc.ucf 
 bitgen -intstyle ise -f atc.ut atc.ncd 
+xst -intstyle ise -ifn "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.xst" -ofn "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc atc.ucf -p xc3s1600e-fg320-4 "atc.ngc" atc.ngd  
+map -intstyle ise -p xc3s1600e-fg320-4 -cm area -ir off -pr off -c 100 -o atc_map.ncd atc.ngd atc.pcf 
+par -w -intstyle ise -ol high -t 1 atc_map.ncd atc.ncd atc.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml atc.twx atc.ncd -o atc.twr atc.pcf -ucf atc.ucf 
+bitgen -intstyle ise -f atc.ut atc.ncd 

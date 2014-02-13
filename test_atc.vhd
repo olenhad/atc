@@ -38,7 +38,9 @@ END test_atc;
 ARCHITECTURE behavior OF test_atc IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
- 
+	-- WARNING:
+	-- This test assumes that atc is operating at the same frequency at the clk. So please change
+	-- atc accordingly otherwise the asserts here would fail.
     COMPONENT atc
     PORT(
          CLK : IN  std_logic;
