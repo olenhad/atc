@@ -50,7 +50,7 @@ signal cur_jet_type : jet_type := light_jet;
 signal prev_jet_type : jet_type := light_jet;
 
 signal req_granted : std_logic := '0';
-signal waited_for : std_logic_vector(3 downto 0) := x"a";
+signal waited_for : std_logic_vector(3 downto 0) := x"0";
 
 begin
 
@@ -68,7 +68,6 @@ req_granted <= '1' when cur_jet_type = heavy_jet or
 						 else
 					'0';
 									  
-
 -- clk_divider to divide the cycle to a smaller frequency		
 clk_divider: process (CLK)
 variable clk_count : std_logic_vector(25 downto 0) := (others => '0');
@@ -91,15 +90,17 @@ variable waited_for_control : wait_state := idle;
 
 begin
 	if rising_edge(clk_div) then
-		cached_req_granted := req_granted;
+	
 		-- idle state asserts no output
 		-- Only way out of idle state, is if a req is registered
 		if current_state = idle then
 			GRANTED <= '0';
 			DENIED <= '0';
 			if req = '1' then
-				
+				cached_req_granted := req_granted;
 				current_state := displaying;
+	
+				
 				if cur_jet_type = heavy_jet then
 					waited_for_control := reset;
 				else
@@ -122,8 +123,9 @@ begin
 				current_state := idle;
 				display_count := b"00";
 			-- prev_jet_type is assigedn the value of cur_jet_type. As this is the point where the atc is ready for a new req
-				prev_jet_type <= cur_jet_type;
-				
+				if cached_req_granted = '1' then
+					prev_jet_type <= cur_jet_type;
+				end if;
 			end if;
 			
 		end if;
@@ -131,14 +133,15 @@ begin
 		-- managing waited_for is independent of the atc state machine
 		-- We need to start waiting when we grant a heavy jet
 		if waited_for_control = count then
-			waited_for <= std_logic_vector(unsigned(waited_for) + 1);
-			if waited_for >= x"a" then
+			if waited_for < x"a" then
+				waited_for <= std_logic_vector(unsigned(waited_for) + 1);
+			else
 				waited_for_control := idle;
 			end if;
 		elsif waited_for_control = idle then
 		
 		elsif waited_for_control = reset then
-			waited_for <= x"0";
+			waited_for <= x"1";
 			waited_for_control := count;
 		end if;
 		waited_for_debug <= waited_for;

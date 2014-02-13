@@ -45,7 +45,9 @@ ARCHITECTURE behavior OF test_atc IS
          REQ : IN  std_logic;
          TYPE_NUMBER : IN  std_logic_vector(2 downto 0);
          GRANTED : OUT  std_logic;
-         DENIED : OUT  std_logic
+         DENIED : OUT  std_logic;
+			 WAITED_FOR_DEBUG : out STD_LOGIC_VECTOR(3 downto 0);
+			 DReqG : out std_logic
         );
     END COMPONENT;
     
@@ -58,7 +60,8 @@ ARCHITECTURE behavior OF test_atc IS
  	--Outputs
    signal GRANTED : std_logic;
    signal DENIED : std_logic;
-
+	signal WAITED_FOR_DEBUG : STD_LOGIC_VECTOR(3 downto 0);
+	signal dReqG : std_logic;
    -- Clock period definitions
    constant CLK_period : time := 10 ns;
  
@@ -70,7 +73,9 @@ BEGIN
           REQ => REQ,
           TYPE_NUMBER => TYPE_NUMBER,
           GRANTED => GRANTED,
-          DENIED => DENIED
+          DENIED => DENIED,
+			 WAITED_FOR_DEBUG => WAITED_FOR_DEBUG,
+			 dreqg => dreqg
         );
 
    -- Clock process definitions
@@ -93,40 +98,83 @@ BEGIN
 
       -- insert stimulus here 
 		
-		TYPE_NUMBER <= b"001";
-		req <= '1';
-		wait for CLK_period;
-		req <= '0';
-		wait for CLK_period*10;
-		
+		-- heavy 
+		-- tests if 3 seconds fulfilled
 		TYPE_NUMBER <= b"001";
 		req <= '1';
 		wait for clk_period;
+		assert GRANTED = '1' report "Test Fail" severity error;
+		
 		req <= '0';
-		wait for clk_period*5;
+		wait for CLK_period*3;
+		assert GRANTED = '0' report "Test Fail" severity error;
+		assert waited_for_debug = x"3" report "Wrong wait val" severity error;
+		-- waited_for == 3
+		
+		
+		-- light
+		-- 
+		TYPE_NUMBER <= b"000";
+		req <= '1';
+		wait for clk_period;
+		assert DENIED = '1' report "Test Fail" severity error;
+		assert waited_for_debug = x"4" report "Wrong wait val" severity error;
+		req <= '0';
+		
+		wait for CLK_period*3;
+		assert GRANTED = '0' and DENIED = '0' report "Test Fail" severity error;
+		assert waited_for_debug = x"7" report "Wrong wait val" severity error;
 		
 		TYPE_NUMBER <= b"000";
 		req <= '1';
 		wait for clk_period;
+		assert DENIED = '1' report "Test Fail" severity error;
+		assert waited_for_debug = x"8" report "Wrong wait val" severity error;
 		req <= '0';
+		wait for CLK_period*3;
+		assert GRANTED = '0' and DENIED = '0' report "Test Fail" severity error;
 		
-		wait for clk_period*5;
 		
 		TYPE_NUMBER <= b"000";
 		req <= '1';
-		wait for clk_period*2;
+		wait for clk_period;
+		assert DENIED = '0' and GRANTED = '1' report "Test Fail" severity error;
 		req <= '0';
-		
-		wait for clk_period*5;
-		
-		TYPE_NUMBER <= b"010";
+		wait for CLK_period*3;
+		assert GRANTED = '0' and DENIED = '0' report "Test Fail" severity error;
+	
+		TYPE_NUMBER <= b"111";
 		req <= '1';
-		wait for clk_period*2;
+		wait for clk_period;
+		assert DENIED = '0' and GRANTED = '1' report "Test Fail" severity error;
 		req <= '0';
+		wait for CLK_period*3;
+	
+	TYPE_NUMBER <= b"001";
+		req <= '1';
+		wait for clk_period;
+		assert DENIED = '0' and GRANTED = '1' report "Test Fail" severity error;
+		req <= '0';
+		wait for CLK_period*3;
+	
+			TYPE_NUMBER <= b"000";
+		req <= '1';
+		wait for clk_period;
+		assert DENIED = '1' and GRANTED = '0' report "Test Fail" severity error;
+		req <= '0';
+		wait for CLK_period*3;
+		assert GRANTED = '0' and DENIED = '0' report "Test Fail" severity error;
+		
+			TYPE_NUMBER <= b"000";
+		req <= '1';
+		wait for clk_period;
+		assert DENIED = '1' and GRANTED = '0' report "Test Fail" severity error;
+		req <= '0';
+		wait for CLK_period*3;
+		assert GRANTED = '0' and DENIED = '0' report "Test Fail" severity error;
 		
 		
-
-      wait;
+		wait;
    end process;
 
 END;
