@@ -46,7 +46,10 @@ type wait_state is (idle, count, reset);
 
 signal clk_div : std_logic;
 
+signal cached_type_number : std_logic_vector(2 downto 0);
+
 signal cur_jet_type : jet_type := light_jet;
+
 signal prev_jet_type : jet_type := light_jet;
 
 signal req_granted : std_logic := '0';
@@ -58,7 +61,7 @@ begin
 cur_jet_type <= heavy_jet when type_number = "001" or 
 										 type_number = "011" or
 										 type_number = "111" else
-					light_jet;
+					 light_jet;
 
 -- req_granted compares the cur_jet_type and prev_jet_type, and a signal called waited_for to determine whether to grant
 -- take off. waited for refers to time passed since the last heavy_jet
@@ -79,7 +82,7 @@ begin
 	end if;
 end process;
 
-main: process (clk_div)
+main: process (clk)
 -- display_count is used to keep track of how many cycles have elapsed since the atc was displaying the result
 variable display_count : std_logic_vector(1 downto 0) := (others => '0');
 -- current_state keeps track of the state of the atc. We only have 2 states right now
@@ -89,7 +92,7 @@ variable waited_for_control : wait_state := idle;
 
 
 begin
-	if rising_edge(clk_div) then
+	if rising_edge(clk) then
 	
 		-- idle state asserts no output
 		-- Only way out of idle state, is if a req is registered
@@ -99,8 +102,7 @@ begin
 			if req = '1' then
 				cached_req_granted := req_granted;
 				current_state := displaying;
-	
-				
+					
 				if cur_jet_type = heavy_jet then
 					waited_for_control := reset;
 				else

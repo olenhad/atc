@@ -8,100 +8,91 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-at 200 ns: Error: Test Fail
-at 230 ns: Error: Test Fail
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-at 240 ns: Error: Test Fail
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
+at 240 ns: Error: Wrong wait val
+at 250 ns: Error: Test Fail
+at 250 ns: Error: Wrong wait val
+at 280 ns: Error: Wrong wait val
 at 290 ns: Error: Test Fail
-at 330 ns: Error: Test Fail
+at 290 ns: Error: Wrong wait val
+at 450 ns: Error: Test Fail
+at 490 ns: Error: Test Fail
+at 560 ns: Error: Test Fail
+ISim O.61xd (signature 0x1cce1bb2)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+at 560 ns: Error: Test Fail
 ISim O.61xd (signature 0x1cce1bb2)
 This is a Full version of ISim.
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 at 240 ns: Error: Wrong wait val
+at 250 ns: Error: Test Fail
 at 250 ns: Error: Wrong wait val
 at 280 ns: Error: Wrong wait val
 at 290 ns: Error: Test Fail
 at 290 ns: Error: Wrong wait val
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
+at 450 ns: Error: Test Fail
+at 490 ns: Error: Test Fail
+at 560 ns: Error: Test Fail
+# restart
+# run 1.00us
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-at 240 ns: Error: Wrong wait val
-at 250 ns: Error: Wrong wait val
-at 280 ns: Error: Wrong wait val
-at 290 ns: Error: Test Fail
-at 290 ns: Error: Wrong wait val
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-at 290 ns: Error: Test Fail
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-at 290 ns: Error: Test Fail
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-ISim O.61xd (signature 0x1cce1bb2)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
+Stopped at time : 5 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 15 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 25 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 35 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 45 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 55 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 65 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 75 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 85 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 95 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 105 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 115 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 125 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 135 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 145 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 155 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 165 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 175 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 185 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 195 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# run 1.00us
+Stopped at time : 205 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 98
+# step
+Stopped at time : 205 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 99
+# step
+Stopped at time : 205 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 100
+# step
+Stopped at time : 205 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 101
+# step
+Stopped at time : 205 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 102
+# step
+Stopped at time : 205 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 103
+# step
+Stopped at time : 205 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 104
+# step
+Stopped at time : 205 ns : File "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" Line 106

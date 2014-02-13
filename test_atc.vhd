@@ -46,8 +46,8 @@ ARCHITECTURE behavior OF test_atc IS
          TYPE_NUMBER : IN  std_logic_vector(2 downto 0);
          GRANTED : OUT  std_logic;
          DENIED : OUT  std_logic;
-			 WAITED_FOR_DEBUG : out STD_LOGIC_VECTOR(3 downto 0);
-			 DReqG : out std_logic
+			 WAITED_FOR_DEBUG : out STD_LOGIC_VECTOR(3 downto 0)
+--			 DReqG : out std_logic
         );
     END COMPONENT;
     
@@ -61,7 +61,6 @@ ARCHITECTURE behavior OF test_atc IS
    signal GRANTED : std_logic;
    signal DENIED : std_logic;
 	signal WAITED_FOR_DEBUG : STD_LOGIC_VECTOR(3 downto 0);
-	signal dReqG : std_logic;
    -- Clock period definitions
    constant CLK_period : time := 10 ns;
  
@@ -74,9 +73,8 @@ BEGIN
           TYPE_NUMBER => TYPE_NUMBER,
           GRANTED => GRANTED,
           DENIED => DENIED,
-			 WAITED_FOR_DEBUG => WAITED_FOR_DEBUG,
-			 dreqg => dreqg
-        );
+			 WAITED_FOR_DEBUG => WAITED_FOR_DEBUG
+			);
 
    -- Clock process definitions
    CLK_process :process
@@ -164,7 +162,7 @@ BEGIN
 		req <= '0';
 		wait for CLK_period*3;
 		assert GRANTED = '0' and DENIED = '0' report "Test Fail" severity error;
-		
+
 			TYPE_NUMBER <= b"000";
 		req <= '1';
 		wait for clk_period;
@@ -173,6 +171,19 @@ BEGIN
 		wait for CLK_period*3;
 		assert GRANTED = '0' and DENIED = '0' report "Test Fail" severity error;
 		
+		
+		TYPE_NUMBER <= b"001";
+		req <= '1';
+		
+		wait for clk_period;
+		assert DENIED = '0' and GRANTED = '1' report "Test Fail" severity error;
+		TYPE_NUMBER <= b"000";
+		assert DENIED = '0' and GRANTED = '1' report "Test Fail" severity error;
+		wait for clk_period*3;
+		
+		assert GRANTED = '0' and DENIED = '1' report "Test Fail" severity error;
+		
+		wait for clk_period*10;
 		
 		wait;
    end process;
