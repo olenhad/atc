@@ -48,7 +48,7 @@ signal clk_div : std_logic;
 
 signal cached_type_number : std_logic_vector(2 downto 0);
 
-signal cur_jet_type : jet_type := light_jet;
+signal input_jet_type : jet_type := light_jet;
 
 signal prev_jet_type : jet_type := light_jet;
 
@@ -58,18 +58,11 @@ signal waited_for : std_logic_vector(3 downto 0) := x"0";
 begin
 
 -- cur_jet_type combinationally tells us the jet_type from the current type_number
-cur_jet_type <= heavy_jet when type_number = "001" or 
+input_jet_type <= heavy_jet when type_number = "001" or 
 										 type_number = "011" or
 										 type_number = "111" else
 					 light_jet;
 
--- req_granted compares the cur_jet_type and prev_jet_type, and a signal called waited_for to determine whether to grant
--- take off. waited for refers to time passed since the last heavy_jet
-req_granted <= '1' when cur_jet_type = heavy_jet or 
-                        (cur_jet_type = light_jet and prev_jet_type = light_jet) or
-								(cur_jet_type = light_jet and prev_jet_type = heavy_jet and waited_for >= x"A")
-						 else
-					'0';
 									  
 -- clk_divider to divide the cycle to a smaller frequency		
 clk_divider: process (CLK)
@@ -87,10 +80,9 @@ main: process (clk)
 variable display_count : std_logic_vector(1 downto 0) := (others => '0');
 -- current_state keeps track of the state of the atc. We only have 2 states right now
 variable current_state : atc_state := idle;
-variable cached_req_granted : std_logic;
 variable waited_for_control : wait_state := idle;
-
-
+variable cur_jet_type : jet_type := light_jet;
+variable req_granted : std_logic;
 begin
 	if rising_edge(clk) then
 	
@@ -100,7 +92,15 @@ begin
 			GRANTED <= '0';
 			DENIED <= '0';
 			if req = '1' then
-				cached_req_granted := req_granted;
+				cur_jet_type := input_jet_type;
+				if cur_jet_type = heavy_jet or 
+               (cur_jet_type = light_jet and prev_jet_type = light_jet) or
+				   (cur_jet_type = light_jet and prev_jet_type = heavy_jet and waited_for >= x"A") then
+					req_granted := '1';
+				else
+					req_granted := '0';
+				end if;
+				
 				current_state := displaying;
 					
 				if cur_jet_type = heavy_jet then
@@ -117,15 +117,15 @@ begin
 		if current_state = displaying then
 				
 			display_count := std_logic_vector(unsigned(display_count) + 1);
-			GRANTED <= cached_req_granted;
-			DENIED <= not cached_req_granted;
+			GRANTED <= req_granted;
+			DENIED <= not req_granted;
 			
 			if display_count = b"11" then
 			-- display_count is reset before state tranistions
 				current_state := idle;
 				display_count := b"00";
 			-- prev_jet_type is assigedn the value of cur_jet_type. As this is the point where the atc is ready for a new req
-				if cached_req_granted = '1' then
+				if req_granted = '1' then
 					prev_jet_type <= cur_jet_type;
 				end if;
 			end if;
