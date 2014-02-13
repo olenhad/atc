@@ -4,13 +4,13 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.22 secs
+Total CPU time to Xst completion: 0.23 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.22 secs
+Total CPU time to Xst completion: 0.23 secs
  
 --> Reading design: atc.prj
 
@@ -105,7 +105,8 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd" in Library work.
-Architecture behavioral of Entity atc is up to date.
+Entity <atc> compiled.
+Entity <atc> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -128,6 +129,8 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <atc>.
     Related source file is "C:/Users/pc richard/Documents/EE4218/l1/lab1b/atc.vhd".
+WARNING:Xst:1780 - Signal <req_granted> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <cached_type_number> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Using one-hot encoding for signal <waited_for_control>.
 INFO:Xst:2117 - HDL ADVISOR - Mux Selector <waited_for_control$mux0000> of Case statement line 0 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
    	- add an 'INIT' attribute on signal <waited_for_control$mux0000> (optimization is then done without any risk)
@@ -141,22 +144,23 @@ INFO:Xst:2117 - HDL ADVISOR - Mux Selector <waited_for_control$mux0000> of Case 
     Found 1-bit register for signal <GRANTED>.
     Found 1-bit register for signal <DENIED>.
     Found 4-bit register for signal <WAITED_FOR_DEBUG>.
-    Found 1-bit register for signal <cached_req_granted>.
     Found 26-bit up counter for signal <clk_count>.
-    Found 26-bit adder for signal <clk_count$add0000> created at line 77.
+    Found 26-bit adder for signal <clk_count$add0000> created at line 73.
     Found 1-bit register for signal <clk_div>.
+    Found 1-bit register for signal <cur_jet_type<0>>.
     Found 1-bit register for signal <current_state<0>>.
-    Found 2-bit adder for signal <current_state_0$add0000> created at line 117.
+    Found 2-bit adder for signal <current_state_0$add0000> created at line 119.
     Found 2-bit up counter for signal <display_count>.
     Found 1-bit register for signal <prev_jet_type<0>>.
-    Found 4-bit comparator greatequal for signal <req_granted$cmp_ge0000> created at line 65.
+    Found 1-bit register for signal <req_granted0>.
+    Found 4-bit comparator greatequal for signal <req_granted0$cmp_ge0000> created at line 96.
     Found 4-bit register for signal <waited_for>.
-    Found 4-bit adder for signal <waited_for$addsub0000> created at line 137.
+    Found 4-bit adder for signal <waited_for$addsub0000> created at line 139.
     Found 3-bit register for signal <waited_for_control>.
-    Found 4-bit comparator less for signal <waited_for_control$cmp_lt0000> created at line 136.
+    Found 4-bit comparator less for signal <waited_for_control$cmp_lt0000> created at line 138.
     Summary:
 	inferred   2 Counter(s).
-	inferred  17 D-type flip-flop(s).
+	inferred  18 D-type flip-flop(s).
 	inferred   3 Adder/Subtractor(s).
 	inferred   2 Comparator(s).
 Unit <atc> synthesized.
@@ -173,8 +177,8 @@ Macro Statistics
 # Counters                                             : 2
  2-bit up counter                                      : 1
  26-bit up counter                                     : 1
-# Registers                                            : 9
- 1-bit register                                        : 6
+# Registers                                            : 10
+ 1-bit register                                        : 7
  3-bit register                                        : 1
  4-bit register                                        : 2
 # Comparators                                          : 2
@@ -200,8 +204,8 @@ Macro Statistics
 # Counters                                             : 2
  2-bit up counter                                      : 1
  26-bit up counter                                     : 1
-# Registers                                            : 17
- Flip-Flops                                            : 17
+# Registers                                            : 18
+ Flip-Flops                                            : 18
 # Comparators                                          : 2
  4-bit comparator greatequal                           : 1
  4-bit comparator less                                 : 1
@@ -225,8 +229,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 44
- Flip-Flops                                            : 44
+# Registers                                            : 45
+ Flip-Flops                                            : 45
 
 =========================================================================
 
@@ -255,7 +259,7 @@ Design Statistics
 # IOs                              : 11
 
 Cell Usage :
-# BELS                             : 158
+# BELS                             : 159
 #      GND                         : 1
 #      INV                         : 3
 #      LUT1                        : 50
@@ -263,15 +267,15 @@ Cell Usage :
 #      LUT2_D                      : 1
 #      LUT3                        : 7
 #      LUT3_D                      : 1
-#      LUT4                        : 12
+#      LUT4                        : 13
 #      LUT4_D                      : 1
 #      LUT4_L                      : 1
 #      MUXCY                       : 50
 #      VCC                         : 1
 #      XORCY                       : 27
-# FlipFlops/Latches                : 44
+# FlipFlops/Latches                : 45
 #      FD                          : 37
-#      FDE                         : 4
+#      FDE                         : 5
 #      FDRE                        : 2
 #      FDS                         : 1
 # Clock Buffers                    : 1
@@ -287,8 +291,8 @@ Device utilization summary:
 Selected Device : 3s1600efg320-4 
 
  Number of Slices:                       41  out of  14752     0%  
- Number of Slice Flip Flops:             44  out of  29504     0%  
- Number of 4 input LUTs:                 79  out of  29504     0%  
+ Number of Slice Flip Flops:             45  out of  29504     0%  
+ Number of 4 input LUTs:                 80  out of  29504     0%  
  Number of IOs:                          11
  Number of bonded IOBs:                  11  out of    250     4%  
  Number of GCLKs:                         1  out of     24     4%  
@@ -315,7 +319,7 @@ Clock Information:
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
 CLK                                | BUFGP                  | 27    |
-clk_div                            | NONE(current_state_0)  | 17    |
+clk_div                            | NONE(cur_jet_type_0)   | 18    |
 -----------------------------------+------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -327,8 +331,8 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 5.772ns (Maximum Frequency: 173.250MHz)
-   Minimum input arrival time before clock: 6.764ns
+   Minimum period: 5.823ns (Maximum Frequency: 171.733MHz)
+   Minimum input arrival time before clock: 6.800ns
    Maximum output required time after clock: 4.283ns
    Maximum combinational path delay: No path found
 
@@ -385,10 +389,10 @@ Delay:               4.850ns (Levels of Logic = 26)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_div'
-  Clock period: 5.772ns (frequency: 173.250MHz)
-  Total number of paths / destination ports: 97 / 23
+  Clock period: 5.823ns (frequency: 171.733MHz)
+  Total number of paths / destination ports: 100 / 25
 -------------------------------------------------------------------------
-Delay:               5.772ns (Levels of Logic = 3)
+Delay:               5.823ns (Levels of Logic = 3)
   Source:            current_state_0 (FF)
   Destination:       waited_for_0 (FF)
   Source Clock:      clk_div rising
@@ -398,20 +402,20 @@ Delay:               5.772ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              10   0.591   0.961  current_state_0 (current_state_0)
-     LUT2_D:I1->LO         1   0.704   0.104  waited_for_control_mux0000<1>11 (N23)
+     FD:C->Q              11   0.591   1.012  current_state_0 (current_state_0)
+     LUT2_D:I1->LO         1   0.704   0.104  waited_for_control_mux0000<1>11 (N24)
      LUT4:I3->O            6   0.704   0.673  waited_for_control_mux0000<1>1 (waited_for_control_mux0000<1>)
-     LUT4:I3->O            1   0.704   0.420  waited_for_mux0000<0>_SW0 (N20)
+     LUT4:I3->O            1   0.704   0.420  waited_for_mux0000<0>_SW0 (N21)
      FDS:S                     0.911          waited_for_0
     ----------------------------------------
-    Total                      5.772ns (3.614ns logic, 2.158ns route)
-                                       (62.6% logic, 37.4% route)
+    Total                      5.823ns (3.614ns logic, 2.209ns route)
+                                       (62.1% logic, 37.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_div'
-  Total number of paths / destination ports: 77 / 18
+  Total number of paths / destination ports: 82 / 20
 -------------------------------------------------------------------------
-Offset:              6.764ns (Levels of Logic = 4)
+Offset:              6.800ns (Levels of Logic = 4)
   Source:            TYPE_NUMBER<0> (PAD)
   Destination:       waited_for_0 (FF)
   Destination Clock: clk_div rising
@@ -421,13 +425,13 @@ Offset:              6.764ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             2   1.218   0.622  TYPE_NUMBER_0_IBUF (TYPE_NUMBER_0_IBUF)
-     LUT3:I0->O            5   0.704   0.808  cur_jet_type_0_or00001 (cur_jet_type_0_or0000)
+     LUT3:I0->O            6   0.704   0.844  input_jet_type_0_or00001 (input_jet_type_0_or0000)
      LUT4:I0->O            6   0.704   0.673  waited_for_control_mux0000<1>1 (waited_for_control_mux0000<1>)
-     LUT4:I3->O            1   0.704   0.420  waited_for_mux0000<0>_SW0 (N20)
+     LUT4:I3->O            1   0.704   0.420  waited_for_mux0000<0>_SW0 (N21)
      FDS:S                     0.911          waited_for_0
     ----------------------------------------
-    Total                      6.764ns (4.241ns logic, 2.523ns route)
-                                       (62.7% logic, 37.3% route)
+    Total                      6.800ns (4.241ns logic, 2.559ns route)
+                                       (62.4% logic, 37.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_div'
@@ -451,14 +455,14 @@ Offset:              4.283ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 11.42 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 8.37 secs
  
 --> 
 
-Total memory usage is 242912 kilobytes
+Total memory usage is 243428 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    2 (   0 filtered)
+Number of warnings :    4 (   0 filtered)
 Number of infos    :    3 (   0 filtered)
 

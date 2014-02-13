@@ -1,7 +1,7 @@
 Release 13.2 par O.61xd (nt64)
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
-PCRICHARD-VAIO::  Thu Feb 13 17:33:01 2014
+PCRICHARD-VAIO::  Thu Feb 13 23:41:38 2014
 
 par -w -intstyle ise -ol high -t 1 atc_map.ncd atc.ncd atc.pcf 
 
@@ -42,7 +42,7 @@ Design Summary Report:
 
 
    Number of BUFGMUXs                        1 out of 24      4%
-   Number of Slices                         42 out of 14752   1%
+   Number of Slices                         43 out of 14752   1%
       Number of SLICEMs                      0 out of 7376    0%
 
 
@@ -52,52 +52,49 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 5 secs 
-Finished initial Timing Analysis.  REAL time: 5 secs 
+Starting initial Timing Analysis.  REAL time: 4 secs 
+Finished initial Timing Analysis.  REAL time: 4 secs 
 
 
 Starting Placer
-Total REAL time at the beginning of Placer: 5 secs 
-Total CPU  time at the beginning of Placer: 5 secs 
+Total REAL time at the beginning of Placer: 4 secs 
+Total CPU  time at the beginning of Placer: 4 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:7062b7) REAL time: 6 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:fbebfb27) REAL time: 5 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:7062b7) REAL time: 6 secs 
+Phase 2.7  Design Feasibility Check (Checksum:fbebfb27) REAL time: 5 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:7062b7) REAL time: 6 secs 
+Phase 3.31  Local Placement Optimization (Checksum:fbebfb27) REAL time: 5 secs 
 
 Phase 4.2  Initial Clock and IO Placement
 
-Phase 4.2  Initial Clock and IO Placement (Checksum:a0609e47) REAL time: 11 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:ad8f4997) REAL time: 10 secs 
 
 Phase 5.30  Global Clock Region Assignment
-Phase 5.30  Global Clock Region Assignment (Checksum:a0609e47) REAL time: 11 secs 
+Phase 5.30  Global Clock Region Assignment (Checksum:ad8f4997) REAL time: 10 secs 
 
 Phase 6.36  Local Placement Optimization
-Phase 6.36  Local Placement Optimization (Checksum:a0609e47) REAL time: 11 secs 
+Phase 6.36  Local Placement Optimization (Checksum:ad8f4997) REAL time: 10 secs 
 
 Phase 7.8  Global Placement
 ..
 ..
-..
-..
-..
-Phase 7.8  Global Placement (Checksum:3a40be53) REAL time: 11 secs 
+Phase 7.8  Global Placement (Checksum:e41e1af1) REAL time: 11 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:3a40be53) REAL time: 11 secs 
+Phase 8.5  Local Placement Optimization (Checksum:e41e1af1) REAL time: 11 secs 
 
 Phase 9.18  Placement Optimization
-Phase 9.18  Placement Optimization (Checksum:1ac8bdbe) REAL time: 11 secs 
+Phase 9.18  Placement Optimization (Checksum:58f553c8) REAL time: 11 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:1ac8bdbe) REAL time: 11 secs 
+Phase 10.5  Local Placement Optimization (Checksum:58f553c8) REAL time: 11 secs 
 
 Total REAL time to Placer completion: 11 secs 
-Total CPU  time to Placer completion: 11 secs 
+Total CPU  time to Placer completion: 10 secs 
 Writing design to file atc.ncd
 
 
@@ -105,34 +102,30 @@ Writing design to file atc.ncd
 Starting Router
 
 
-Phase  1  : 209 unrouted;      REAL time: 31 secs 
+Phase  1  : 215 unrouted;      REAL time: 27 secs 
 
-Phase  2  : 183 unrouted;      REAL time: 31 secs 
+Phase  2  : 188 unrouted;      REAL time: 27 secs 
 
-Phase  3  : 28 unrouted;      REAL time: 31 secs 
+Phase  3  : 5 unrouted;      REAL time: 27 secs 
 
-Phase  4  : 36 unrouted; (Par is working to improve performance)     REAL time: 35 secs 
+Phase  4  : 16 unrouted; (Par is working to improve performance)     REAL time: 29 secs 
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 35 secs 
-
-Updating file: atc.ncd with current fully routed design.
-
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 35 secs 
-
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 51 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 29 secs 
 
 Updating file: atc.ncd with current fully routed design.
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 51 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 29 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 51 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 31 secs 
 
-Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 51 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 31 secs 
 
-Phase 11  : 0 unrouted; (Par is working to improve performance)     REAL time: 51 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 31 secs 
 
-Total REAL time to Router completion: 51 secs 
-Total CPU time to Router completion: 50 secs 
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 31 secs 
+
+Total REAL time to Router completion: 31 secs 
+Total CPU time to Router completion: 30 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -152,7 +145,7 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |           CLK_BUFGP | BUFGMUX_X1Y11| No   |   14 |  0.011     |  0.526      |
 +---------------------+--------------+------+------+------------+-------------+
-|             clk_div |         Local|      |   11 |  0.289     |  2.211      |
+|             clk_div |         Local|      |   12 |  0.136     |  2.236      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -172,10 +165,10 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clk | SETUP       |         N/A|     4.785ns|     N/A|           0
-  _div                                      | HOLD        |     1.069ns|            |       0|           0
+  Autotimespec constraint for clock net clk | SETUP       |         N/A|     6.061ns|     N/A|           0
+  _div                                      | HOLD        |     1.242ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net CLK | SETUP       |         N/A|     4.491ns|     N/A|           0
+  Autotimespec constraint for clock net CLK | SETUP       |         N/A|     4.506ns|     N/A|           0
   _BUFGP                                    | HOLD        |     1.618ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
@@ -192,10 +185,10 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-Total REAL time to PAR completion: 52 secs 
-Total CPU time to PAR completion: 51 secs 
+Total REAL time to PAR completion: 32 secs 
+Total CPU time to PAR completion: 31 secs 
 
-Peak Memory Usage:  322 MB
+Peak Memory Usage:  321 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.
